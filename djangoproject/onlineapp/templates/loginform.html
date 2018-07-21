@@ -1,0 +1,13 @@
+{% extends "_base.html"%}
+
+{% block content %}
+<div class="container">
+    <h2>User Login:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <input style="margin-top:20px;height:35px;width:70px;margin-right:20px;color:white;background:black" type="submit" value="Login"/>
+        <button style="background-color:black"><a href="{% url 'onlineapp:signup' %}" class="btn btn-default active;btn btn-info btn-sm">Signup</a></button>
+    </form>
+</div>
+{% endblock %}

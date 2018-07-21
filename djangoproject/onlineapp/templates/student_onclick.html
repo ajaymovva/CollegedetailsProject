@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>collegeinfo</title>
+    <style>
+        button
+        {
+            width:60px;
+        }
+    </style>
+</head>
+<body style="background:black;color:white">
+<center>
+    <table border="2" style="margin-top:30px">
+        <caption>STUDENT DETAILS</caption>
+        <tr>
+            <th>studentname</th>
+            <th>email</th>
+            <th>Acronym</th>
+            <th>Total</th>
+        </tr>
+        {% for obj in object %}
+        <tr>
+            <td>{{obj.name}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.college__acronym}}</td>
+             <td>
+                {% if obj.dropped_out %}
+                    <button onclick="this.innerHTML='Absent'">CLICK</button>
+                 {% else %}
+                    <button onclick="this.innerHTML='{{obj.mocktestmarks__total}}'">CLICK</button>
+                 {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>

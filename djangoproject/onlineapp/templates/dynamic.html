@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>collegeinfo</title>
+</head>
+<body style="background:black;color:blue">
+<center>
+<table border="2" style="margin-top:30px">
+    <caption>STUDENT DETAILS</caption>
+    <tr>
+        <th>stundentname</th>
+        <th>email</th>
+    </tr>
+    {% for obj in object %}
+    <tr>
+        <td>{{obj.name}}</td>
+        <td>{{obj.email}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "_base.html"%}
+
+{% block content %}
+<div class="container">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<h2 align="center">STUDENT-INFORMATION</h2>
+    {% if 'onlineapp.add_student' in user_permissions %}
+        <button  ><a style=" background-color:black,color:white" href="{% url 'onlineapp:Add_student' college.id %}" class="btn btn-default active;btn btn-info btn-sm">+ AddStudent</a></button>
+    {% endif %}
+<center>
+    <table class="table table-hover">
+        <tr>
+            <th >Id</th>
+            <th >Name</th>
+            <th >email</th>
+            <th >total</th>
+            {% if 'onlineapp.change_student' in user_permissions and 'onlineapp.delete_student' in user_permissions %}
+                <th >operations</th>
+            {% endif %}
+        </tr>
+        {% for obj in object %}
+        <tr>
+            <td>
+                {{obj.id}}
+            </td>
+            <td>{{obj.name}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.mocktestmarks__total}}</td>
+            {% if 'onlineapp.change_student' in user_permissions and 'onlineapp.delete_student' in user_permissions %}
+                <td><a href="student/{{obj.id}}/edit/"  class="btn btn-default active;btn btn-info btn-sm" >edit</a>   <a href="student/{{obj.id}}/delete/"  class="btn btn-default active;btn btn-info btn-sm">delete</a>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</div>
+{% endblock %}
